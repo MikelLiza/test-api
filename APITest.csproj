@@ -10,6 +10,10 @@
         <PackageReference Include="AutoMapper" Version="10.1.1"/>
         <PackageReference Include="AutoMapper.Collection.EntityFrameworkCore" Version="7.1.3"/>
         <PackageReference Include="AutoMapper.Extensions" Version="2.1.0"/>
+        <PackageReference Include="Firebase.js" Version="2.1.2"/>
+        <PackageReference Include="FirebaseAdmin" Version="2.2.0"/>
+        <PackageReference Include="FirebaseDatabase.net" Version="4.0.7"/>
+        <PackageReference Include="Google.Cloud.Firestore" Version="2.5.0"/>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.1"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.1"/>

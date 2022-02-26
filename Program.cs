@@ -12,9 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Configuration.AddJsonFile("appsettings.Development.json", true, true);
+builder.Services.AddOptions();
+builder.Services.Configure<FirebaseConfig>(builder.Configuration.GetSection("FirebaseConfig"));
 builder.Services.Configure<TwitchConfig>(builder.Configuration.GetSection("TwitchConfig"));
 builder.Services.Configure<IGDBConfig>(builder.Configuration.GetSection("IGDBConfig"));
+builder.Configuration.AddJsonFile("appsettings.Development.json", true, true);
 builder.Services.AddDbContext<TestDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("TestDb")));
 builder.Services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "APITest", Version = "v1"}); });
@@ -34,6 +36,7 @@ builder.Services.AddTransient<IFakeStoreService, FakeStoreService>();
 builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddTransient(typeof(IExternalRepository<>), typeof(ExternalRepository<>));
 builder.Services.AddTransient<IIGDBRepository, IGDBRepository>();
+builder.Services.AddTransient<IFirebaseRepository, FirebaseRepository>();
 
 var mapperConfig = new MapperConfiguration(amc => { amc.AddProfile(new AutoMapperProfile()); });
 
